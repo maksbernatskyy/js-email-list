@@ -12,9 +12,8 @@ Tools:
 
 /* Funzioni */
 
-// Markup elemento lista
 function getListMarkup(element) {
-    `<li>${element}</li>`
+    return `<li>${element}</li>`
 }
 
 // =======================================================================
@@ -41,15 +40,18 @@ for (let i = 0; i < 10; i++) {
        .then(response => response.json())
        .then(data => {
 
-        email.push(data)
+        // Inserimento dati nell'array
+        email.push(data.response)
+
+        // Quando l'array sarà pieno, si avvierà il processo inserimento dati
+        if (email.length === 10) {
+            for(let i = 0; i < 10; i++) {
+                const thisEmail = email[i]
+                listField.innerHTML += getListMarkup(thisEmail)
+            } 
+        }
        })
        .catch(error => {
         console.error(error)
        })
-
 }
-
-// =======================================================================
-// =======================================================================
-
-/* Spostamento nella lista dell'HTML */
