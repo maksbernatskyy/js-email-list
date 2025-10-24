@@ -52,11 +52,24 @@ console.log(email);
 // Lista html
 const listField = document.getElementById("list");
 
+// Bottone
+const buttonEl = document.querySelector('button')
+
 // =======================================================================
 // =======================================================================
 
 /* Generazione email */
 
-for (let i = 0; i < 10; i++) {
+buttonEl.addEventListener('click', function(){
+
+  // Svuotamento lista
+  email.length = 0
+  listField.innerHTML = ''
+  // Riempimento lista
+  for (let i = 0; i < 10; i++) {
     getListMarkup(email, listField)
 }
+
+})
+
+
